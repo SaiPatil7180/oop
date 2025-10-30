@@ -1,0 +1,54 @@
+#include <iostream> 
+#include <map>    // for map #include <string> // for string using namespace std; 
+ 
+int main() {   
+  map<string, string> studentMap; // Map<PRN, Name>   
+int n; 
+ 
+    cout << "Enter number of students: ";     
+cin >> n; 
+ 
+    // Input PRN and Name   
+
+  for (int i = 0; i < n; i++) {  
+       string prn, name;      
+   cout << "\nEnter PRN of student " << i + 1 << ": ";       
+cin >> prn;   
+      cout << "Enter name of student " << i + 1 << ": ";     
+cin >> name;  // single-word name only      
+=studentMap[prn] = name; 
+    } 
+ 
+    int choice;     do { 
+        cout << "\n===== STUDENT LOOKUP MENU =====\n";         cout << "1. Search student by PRN\n";    
+     cout << "2. Display all students\n";    
+     cout << "3. Exit\n";   
+      cout << "Enter your choice: ";    
+     cin >> choice; 
+ 
+ 
+        if (choice == 1) {      
+       string searchPRN;      
+       cout << "Enter PRN to search: ";             cin >> searchPRN; 
+ 
+            auto it = studentMap.find(searchPRN);  
+           if (it != studentMap.end())  
+               cout << "Student found! Name: " << it->second << endl;             else 
+                cout << "No student found with PRN " << searchPRN << endl; 
+        } 
+        else if (choice == 2) {      
+       cout << "\nList of all students:\n";     
+        for (auto &pair : studentMap)            
+     cout << "PRN: " << pair.first << "  |  Name: " << pair.second << endl; 
+        } 
+        else if (choice == 3) {       
+      cout << "Exiting program. Goodbye!\n"; 
+        }         else { 
+            cout << "Invalid choice! Try again.\n"; 
+        } 
+ 
+    } while (choice != 3); 
+ 
+    return 0; 
+} 
+ 
